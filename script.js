@@ -26,8 +26,19 @@ var spelerY = 600; // y-positie van speler
  */
 var beweegAlles = function () {
   // speler
-     spelerX = spelerX+1
-  
+  var snelheid = 6
+  if (keyIsDown(68)){
+     spelerX = spelerX + snelheid
+  };
+  if (keyIsDown(65)){
+    spelerX = spelerX - snelheid
+ };
+  if (keyIsDown(87)){
+    spelerY = spelerY - snelheid
+  };
+  if (keyIsDown(83)){
+    spelerY = spelerY + snelheid
+  };
   // vijand
 
   // kogel

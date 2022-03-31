@@ -39,6 +39,7 @@ var beweegAlles = function () {
   if (keyIsDown(83)){
     spelerY = spelerY + speed
   };
+  nice
   // vijand
 
   // kogel

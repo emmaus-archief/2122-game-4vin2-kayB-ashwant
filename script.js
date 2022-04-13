@@ -25,7 +25,22 @@ var vijandY = 200;
 /**
  * Updatet globale variabelen met posities van speler, vijanden en kogels
  */
- 
+ var beweegAlles = function () {
+  // speler
+  var speed = 6
+  if (keyIsDown(68) || keyIsDown(RIGHT_ARROW)){
+     spelerX = spelerX + speed
+  };
+  if (keyIsDown(65) || keyIsDown(LEFT_ARROW)){
+    spelerX = spelerX - speed
+ };
+  if (keyIsDown(87) || keyIsDown(UP_ARROW)){
+    spelerY = spelerY - speed
+  };
+  if (keyIsDown(83) || keyIsDown(DOWN_ARROW)){
+    spelerY = spelerY + speed
+  };
+};
  
   
   // vijand

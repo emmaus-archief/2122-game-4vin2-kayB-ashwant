@@ -25,26 +25,13 @@ var vijandY = 200;
 /**
  * Updatet globale variabelen met posities van speler, vijanden en kogels
  */
-var beweegAlles = function () {
-  // speler
-  var speed = 6
-  if (keyIsDown(68)){
-     spelerX = spelerX + speed
-  };
-  if (keyIsDown(65)){
-    spelerX = spelerX - speed
- };
-  if (keyIsDown(87)){
-    spelerY = spelerY - speed
-  };
-  if (keyIsDown(83)){
-    spelerY = spelerY + speed
-  };
+ 
+ 
   
   // vijand
 
   // kogel
-};
+
 
 /**
  * Checkt botsingen

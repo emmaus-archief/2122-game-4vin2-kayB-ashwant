@@ -40,8 +40,23 @@ var vijandY = 200;
   if (keyIsDown(83) || keyIsDown(DOWN_ARROW)){
     spelerY = spelerY + speed
   };
+
+
+  if (keyIsDown(68) && keyIsDown(RIGHT_ARROW)){
+    spelerX = spelerX + speed * 2
+  };
+  if (keyIsDown(65) && keyIsDown(LEFT_ARROW)){
+    spelerX = spelerX - speed * 2
+  };
+  if (keyIsDown(87) && keyIsDown(UP_ARROW)){
+  spelerY = spelerY - speed * 2
+  };
+  if (keyIsDown(83) && keyIsDown(DOWN_ARROW)){
+    spelerY = spelerY + speed * 2
+  };
+
 };
- 
+
   
   // vijand
 

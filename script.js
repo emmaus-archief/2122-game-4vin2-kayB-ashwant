@@ -70,7 +70,7 @@ var vijandY = 200;
  */
 var verwerkBotsing = function () {
   // botsing speler tegen vijand
-
+  
   // botsing kogel tegen vijand
 
   // update punten en health
@@ -104,7 +104,15 @@ var tekenAlles = function () {
   ellipse(spelerX, spelerY, 10, 10);
 
   // punten en health
-
+  fill("lime") 
+  
+  if (spelerY - vijandY < 75 &&
+    
+    spelerX - vijandX < 75 
+  )
+    fill("red")
+    rect(120, 600, 100, 100)
+  
 };
 
 /**

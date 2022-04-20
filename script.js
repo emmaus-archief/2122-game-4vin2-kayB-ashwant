@@ -85,16 +85,17 @@ var tekenAlles = function () {
     fill('blue')
      rect(0,0,1280,720)
  // vijand
- fill('red')
+ fill('black')
  rect(vijandX -50, vijandY -50, 100, 100);
- fill('green')
+ fill('red')
  ellipse(vijandX - 30, vijandY - 10, 30,30)
- fill('green')
+ fill('red')
  ellipse(vijandX + 30, vijandY - 10, 30,30)
  fill('green')
  ellipse(vijandX, vijandY + 30, 80,10)
  fill('white')
- triangle(vijandX -20,vijandY + 25, vijandX - 10, vijandY +40, vijandX + 10, vijandY +26)
+ triangle(vijandX -30,vijandY + 26, vijandX - 15, vijandY +40, vijandX +1, vijandY +26)
+ triangle(vijandX +1,vijandY + 26, vijandX + 15, vijandY +40, vijandX +34, vijandY +26)
   // kogel
 
   // speler

@@ -55,14 +55,18 @@ var vijandY = 200;
     spelerY = spelerY + speed * 2
   };
 
-};
+
 
   
   // vijand
+  var vijandSpeed = 3
 
+  if (spelerX > vijandX) {
+    vijandX = vijandX + vijandSpeed
+  };
   // kogel
 
-
+ };
 /**
  * Checkt botsingen
  * Verwijdert neergeschoten dingen
@@ -105,17 +109,17 @@ var tekenAlles = function () {
   ellipse(spelerX, spelerY, 10, 10);
 
   // punten en health
-  fill("lime") 
-  
+  fill("lime")
+
   if (spelerY - vijandY < 75 &&
-    
-    spelerX - vijandX < 75 
+    spelerY - vijandY > -75 &&
+    spelerX - vijandX < 75 &&
+    spelerX - vijandX > -75
   )
     fill("red")
-    rect(120, 600, 100, 100)
-  
-};
+  rect(120, 600, 100, 100)
 
+};
 /**
  * return true als het gameover is
  * anders return false

@@ -59,11 +59,20 @@ var vijandY = 200;
 
   
   // vijand
-  var vijandSpeed = 3
+  var vijandSpeed = 4
 
   if (spelerX > vijandX) {
     vijandX = vijandX + vijandSpeed
   };
+  if (spelerY > vijandY) {
+      vijandY = vijandY + vijandSpeed
+  };
+  if (spelerX < vijandX) {
+    vijandX = vijandX - vijandSpeed
+  };
+  if (spelerY < vijandY) {
+    vijandY = vijandY - vijandSpeed
+};
   // kogel
 
  };
@@ -87,7 +96,8 @@ var verwerkBotsing = function () {
 var tekenAlles = function () {
   // achtergrond
     fill('blue')
-     rect(0,0,1280,720)
+     rect(0,0,2560,1440)
+     
  // vijand
  fill('black')
  rect(vijandX -50, vijandY -50, 100, 100);
@@ -117,7 +127,7 @@ var tekenAlles = function () {
     spelerX - vijandX > -75
   )
     fill("red")
-  rect(120, 600, 100, 100)
+  rect(120, 1300, 100, 100)
 
 };
 /**
@@ -140,7 +150,7 @@ var checkGameOver = function () {
  */
 function setup() {
   // Maak een canvas (rechthoek) waarin je je speelveld kunt tekenen
-  createCanvas(1280, 720);
+  createCanvas(2560, 1440);
 
   // Kleur de achtergrond blauw, zodat je het kunt zien
   background('blue');

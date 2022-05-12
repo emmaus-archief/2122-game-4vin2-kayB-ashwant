@@ -18,6 +18,7 @@ var spelerX = 600; // x-positie van speler
 var spelerY = 600; // y-positie van speler
 var vijandX = 600;
 var vijandY = 200;
+
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
 /* ********************************************* */
@@ -113,10 +114,19 @@ var tekenAlles = function () {
   // kogel
 
   // speler
-  fill("white");
-  rect(spelerX - 25, spelerY - 25, 50, 50);
-  fill("black");
-  ellipse(spelerX, spelerY, 10, 10);
+  var img;
+  function preload() {
+
+    img = LoadImage ('cjijc.png');
+  }
+    function setup (){
+
+    image(img,spelerX,spelerY)
+  }
+
+    fill("white"); rect(spelerX - 25, spelerY - 25, 50, 50); 
+    fill("black"); 
+    ellipse(spelerX, spelerY, 10, 10);
 
   // punten en health
   fill("lime")

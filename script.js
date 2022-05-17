@@ -18,7 +18,7 @@ var spelerX = 600; // x-positie van speler
 var spelerY = 600; // y-positie van speler
 var vijandX = 600;
 var vijandY = 200;
-
+var springSnelheid = 0;
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
 /* ********************************************* */
@@ -56,6 +56,16 @@ var vijandY = 200;
     spelerY = spelerY + speed * 2
   };
 
+  if (keyIsDown(32)) {
+    springSnelheid = 1;
+  }
+  spelerY = spelerY + springSnelheid ;
+  springSnelheid = springSnelheid - 0.2 ;
+
+ if (spelerY > 600) {
+   springSnelheid = 0;
+   spelerY = 600;
+ }
 
 
   

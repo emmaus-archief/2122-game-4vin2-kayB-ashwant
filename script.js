@@ -57,16 +57,18 @@ var springSnelheid = 0;
     spelerY = spelerY + speed * 2
   };
 
-  if (keyIsDown(32)) {
-    springSnelheid = 1;
+  if (aanHetSpringen === false && keyIsDown(32)) { // start met springen
+    springSnelheid = 10;
+    aanHetSpringen = true;
   }
-  spelerY = spelerY + springSnelheid ;
-  springSnelheid = springSnelheid - 0.2 ;
-
- if (spelerY > 600) {
-   springSnelheid = 0;
-   spelerY = 600;
- }
+  if (aanHetSpringen === true) { // bezig met springen
+    spelerY = spelerY - springSnelheid ;
+    springSnelheid = springSnelheid - 0.2 ;
+  }
+  if (aanHetSpringen === true && spelerY > 1280) { // klaar met springen
+    aanHetSpringen = false;
+    spelerY = spelerY;
+  }
 
 
   

@@ -196,7 +196,7 @@ function draw() {
   if (spelStatus === GAMEOVER) {
     // teken game-over scherm
      textSize(50);
-    Text('verloren',100,100);
+    text('verloren',100,100);
     fill(0,0,0);
   }
 }

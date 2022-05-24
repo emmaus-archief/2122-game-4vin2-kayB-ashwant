@@ -20,6 +20,7 @@ var spelerY = 600; // y-positie van speler
 var vijandX = 600;
 var vijandY = 200;
 var springSnelheid = 0;
+var aanHetSpringen = false
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
 /* ********************************************* */
@@ -65,9 +66,9 @@ var springSnelheid = 0;
     spelerY = spelerY - springSnelheid ;
     springSnelheid = springSnelheid - 0.2 ;
   }
-  if (aanHetSpringen === true && spelerY > 1280) { // klaar met springen
+  if (aanHetSpringen === true && spelerY > 1440-30) { // klaar met springen
     aanHetSpringen = false;
-    spelerY = spelerY;
+    spelerY = 1440-25;
   }
 
 

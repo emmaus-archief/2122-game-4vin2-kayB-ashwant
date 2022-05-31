@@ -198,7 +198,19 @@ function draw() {
   if (spelStatus === GAMEOVER) {
     // teken game-over scherm
      textSize(50);
-    text('verloren',100,100);
+    text('verloren klik BACKSPACE voor uitleg',100,100);
     fill(0,0,0);
   }
+}
+
+
+if (spelStatus === UITLEG) {
+  // teken uitleg scherm
+  textSize(50);
+  text('Druk "enter" voor spelen', 100,100);
+  fill(0,0,0);
+}
+
+if (keyIsDown (08)){
+  spelStatus === UITLEG
 }

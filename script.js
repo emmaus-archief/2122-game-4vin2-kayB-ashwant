@@ -16,11 +16,12 @@ const UITLEG = 3;
 var spelStatus = SPELEN;
 
 var spelerX = 600; // x-positie van speler
-var spelerY = 600; // y-positie van speler
+var spelerY = 720-25; // y-positie van speler
 var vijandX = 600;
 var vijandY = 200;
 var springSnelheid = 0;
 var aanHetSpringen = false
+var img;
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
 /* ********************************************* */
@@ -37,26 +38,22 @@ var aanHetSpringen = false
   if (keyIsDown(65) || keyIsDown(LEFT_ARROW)){
     spelerX = spelerX - speed
  };
-  if (keyIsDown(87) || keyIsDown(UP_ARROW)){
-    spelerY = spelerY - speed
-  };
-  if (keyIsDown(83) || keyIsDown(DOWN_ARROW)){
-    spelerY = spelerY + speed
-  };
+ 
 
 
-  if (keyIsDown(68) && keyIsDown(RIGHT_ARROW)){
+  if (keyIsDown(68) && keyIsDown(16)){
     spelerX = spelerX + speed * 2
   };
-  if (keyIsDown(65) && keyIsDown(LEFT_ARROW)){
+  if (keyIsDown(65) && keyIsDown(16)){
     spelerX = spelerX - speed * 2
   };
-  if (keyIsDown(87) && keyIsDown(UP_ARROW)){
-  spelerY = spelerY - speed * 2
+  if (keyIsDown(LEFT_ARROW) && keyIsDown(16)){
+    spelerX = spelerX - speed * 2
   };
-  if (keyIsDown(83) && keyIsDown(DOWN_ARROW)){
-    spelerY = spelerY + speed * 2
+  if (keyIsDown(RIGHT_ARROW) && keyIsDown(16)){
+    spelerX = spelerX + speed * 2
   };
+
 
   if (aanHetSpringen === false && keyIsDown(32)) { // start met springen
     springSnelheid = 10;
@@ -68,7 +65,7 @@ var aanHetSpringen = false
   }
   if (aanHetSpringen === true && spelerY > 1440-30) { // klaar met springen
     aanHetSpringen = false;
-    spelerY = 1440-25;
+    spelerY = 720-25;
   }
 
 
@@ -118,7 +115,7 @@ var verwerkBotsing = function () {
 var tekenAlles = function () {
   // achtergrond
     fill('blue')
-     rect(0,0,2560,1440)
+     rect(0,0,1280,720)
      
  // vijand
  fill('black')
@@ -132,23 +129,20 @@ var tekenAlles = function () {
  fill('white')
  triangle(vijandX -30,vijandY + 26, vijandX - 15, vijandY +40, vijandX +1, vijandY +26)
  triangle(vijandX +1,vijandY + 26, vijandX + 15, vijandY +40, vijandX +34, vijandY +26)
-  // kogel
-
+  
+   // platform
+   fill("red")
+   rect(130, 150, 100, 20);
+   
+   
   // speler
-  var img;
-  function preload() {
-
-    img = LoadImage ('cjijc.png');
-  }
-    function setup (){
-
-    image(img,spelerX,spelerY)
-  }
+  
 
     fill("white"); rect(spelerX - 25, spelerY - 25, 50, 50); 
     fill("black"); 
     ellipse(spelerX, spelerY, 10, 10);
 
+    //image(img,spelerX,spelerY)
   // punten en health
   
 
@@ -166,6 +160,14 @@ var checkGameOver = function () {
 /* setup() en draw() functies / hoofdprogramma   */
 /* ********************************************* */
 
+  function preload() {
+
+   // img = LoadImage ('cjijc.png');
+  }
+  
+
+
+  
 /**
  * setup
  * de code in deze functie wordt één keer uitgevoerd door
@@ -173,7 +175,7 @@ var checkGameOver = function () {
  */
 function setup() {
   // Maak een canvas (rechthoek) waarin je je speelveld kunt tekenen
-  createCanvas(2560, 1440);
+  createCanvas(1280,720);
 
   // Kleur de achtergrond blauw, zodat je het kunt zien
   background('blue');

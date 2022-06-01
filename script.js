@@ -13,7 +13,7 @@
 const SPELEN = 1;
 const GAMEOVER = 2;
 const UITLEG = 3;
-var spelStatus = SPELEN;
+var spelStatus = UITLEG;
 
 var spelerX = 600; // x-positie van speler
 var spelerY = 720-25; // y-positie van speler
@@ -68,15 +68,24 @@ var img;
     spelerY = 720-25;
   }
 
+  
   //platorm
   if (spelerX > 130 &&
       spelerX < 230 &&
       spelerY < 650 &&
-      spelerY > 650 -25) 
+      spelerY > 650 -20) 
       {
-        spelerY = 650- 25
+        spelerY = 630
+        console.log("pik")
+       /* aanHetSpringen = false
+        if (spelerX < 130 || 
+           spelerX > 230 
+          ){ aanHetSpringen = true
+          
+        }*/
       }
-  
+
+
   
   // vijand
   var vijandSpeed = 4
@@ -110,7 +119,7 @@ var verwerkBotsing = function () {
     spelerX - vijandX < 53 &&
     spelerX - vijandX > -52
   )
-  (spelStatus = SPELEN)
+  (spelStatus = GAMEOVER)
   // botsing kogel tegen vijand
 
   // update punten en health
@@ -202,23 +211,33 @@ function draw() {
     if (checkGameOver()) {
       spelStatus = GAMEOVER;
     }
+    console.log("Spelen")
   }
   if (spelStatus === GAMEOVER) {
     // teken game-over scherm
+    console.log("Game over")
      textSize(50);
-    text('verloren klik BACKSPACE voor uitleg',100,100);
-    fill(0,0,0);
+     fill(0,0,0);
+    text('verloren, klik BACKSPACE voor uitleg',100,100);
+    if (keyIsDown(8)) { // Backspace
+      spelStatus = UITLEG;
+    }
   }
 }
 
 
 if (spelStatus === UITLEG) {
   // teken uitleg scherm
+  console.log("Uitleg");
+   rect(0,0,1280,720);
+  fill(0,0,255);
   textSize(50);
-  text('Druk "enter" voor spelen', 100,100);
   fill(0,0,0);
+  text('Druk "enter" voor spelen', 100,100);
+  if (keyIsDown(13)){ // enter
+    spelerX = 350
+    vijandX = 900
+spelStatus = SPELEN;
+  }
 }
 
-if (keyIsDown (08)){
-  spelStatus === UITLEG
-}

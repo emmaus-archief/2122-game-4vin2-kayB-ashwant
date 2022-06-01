@@ -17,11 +17,11 @@ var spelStatus = UITLEG;
 
 var spelerX = 600; // x-positie van speler
 var spelerY = 720-25; // y-positie van speler
-var vijandX = 600;
-var vijandY = 200;
-var springSnelheid = 0;
-var aanHetSpringen = false
-var img;
+var vijandX = 600; // x-positie van vijand
+var vijandY = 200; // y-positie van vijand
+var springSnelheid = 0; // snelheid van sprong
+var aanHetSpringen = false // sprong
+var img // plaatje
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
 /* ********************************************* */
@@ -76,13 +76,13 @@ var img;
       spelerY > 650 -20) 
       {
         spelerY = 630
-        console.log("pik")
-       /* aanHetSpringen = false
+        console.log("SPRING")
+       aanHetSpringen = false
         if (spelerX < 130 || 
-           spelerX > 230 
-          ){ aanHetSpringen = true
+           spelerX > 230) 
+          { aanHetSpringen = true
           
-        }*/
+        }
       }
 
 
@@ -119,7 +119,7 @@ var verwerkBotsing = function () {
     spelerX - vijandX < 53 &&
     spelerX - vijandX > -52
   )
-  (spelStatus = GAMEOVER)
+  (spelStatus = SPELEN)
   // botsing kogel tegen vijand
 
   // update punten en health
@@ -155,11 +155,11 @@ var tekenAlles = function () {
   // speler
   
 
-    fill("white"); rect(spelerX - 25, spelerY - 25, 50, 50); 
+    /*fill("white"); rect(spelerX - 25, spelerY - 25, 50, 50); 
     fill("black"); 
-    ellipse(spelerX, spelerY, 10, 10);
-
-    //image(img,spelerX,spelerY)
+    ellipse(spelerX, spelerY, 10, 10); */
+    image(img, spelerX-50, spelerY-50, 100,77)
+    
   // punten en health
   
 
@@ -178,8 +178,7 @@ var checkGameOver = function () {
 /* ********************************************* */
 
   function preload() {
-
-   // img = LoadImage ('cjijc.png');
+  img = loadImage('plaatjes/Goomba-icon.png');
   }
   
 
@@ -223,21 +222,23 @@ function draw() {
       spelStatus = UITLEG;
     }
   }
-}
+
 
 
 if (spelStatus === UITLEG) {
   // teken uitleg scherm
   console.log("Uitleg");
    rect(0,0,1280,720);
-  fill(0,0,255);
-  textSize(50);
   fill(0,0,0);
   text('Druk "enter" voor spelen', 100,100);
+  textSize(50);
+  fill(0,0,255);
   if (keyIsDown(13)){ // enter
     spelerX = 350
+    spelerY = 695
     vijandX = 900
+    vijandY = 200
 spelStatus = SPELEN;
   }
 }
-
+}

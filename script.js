@@ -63,12 +63,20 @@ var img;
     spelerY = spelerY - springSnelheid ;
     springSnelheid = springSnelheid - 0.2 ;
   }
-  if (aanHetSpringen === true && spelerY > 1440-30) { // klaar met springen
+  if (aanHetSpringen === true && spelerY > 720-30) { // klaar met springen
     aanHetSpringen = false;
     spelerY = 720-25;
   }
 
-
+  //platorm
+  if (spelerX > 130 &&
+      spelerX < 230 &&
+      spelerY < 650 &&
+      spelerY > 650 -25) 
+      {
+        spelerY = 650- 25
+      }
+  
   
   // vijand
   var vijandSpeed = 4
@@ -97,12 +105,12 @@ var verwerkBotsing = function () {
   // botsing speler tegen vijand
   
 
-  if (spelerY - vijandY < 75 &&
-    spelerY - vijandY > -75 &&
-    spelerX - vijandX < 75 &&
-    spelerX - vijandX > -75
+  if (spelerY - vijandY < 62 &&
+    spelerY - vijandY > -40 &&
+    spelerX - vijandX < 53 &&
+    spelerX - vijandX > -52
   )
-  (spelStatus = GAMEOVER)
+  (spelStatus = SPELEN)
   // botsing kogel tegen vijand
 
   // update punten en health
@@ -119,20 +127,20 @@ var tekenAlles = function () {
      
  // vijand
  fill('black')
- rect(vijandX -50, vijandY -50, 100, 100);
+ rect(vijandX -50/2, vijandY -50/2 +10, 100/2, 100/2);
  fill('red')
- ellipse(vijandX - 30, vijandY - 10, 30,30)
+ ellipse(vijandX - 30/2, vijandY - 10/2, 30/2,30/2)
  fill('red')
- ellipse(vijandX + 30, vijandY - 10, 30,30)
+ ellipse(vijandX + 30/2 +2, vijandY - 10/2, 30/2,30/2)
  fill('green')
- ellipse(vijandX, vijandY + 30, 80,10)
+ ellipse(vijandX, vijandY + 30, 80/2,10/2)
  fill('white')
- triangle(vijandX -30,vijandY + 26, vijandX - 15, vijandY +40, vijandX +1, vijandY +26)
- triangle(vijandX +1,vijandY + 26, vijandX + 15, vijandY +40, vijandX +34, vijandY +26)
+ triangle(vijandX -25,vijandY + 26, vijandX - 15, vijandY +40, vijandX +1, vijandY +26)
+ triangle(vijandX +1,vijandY + 26, vijandX + 15, vijandY +40, vijandX +26, vijandY +26)
   
    // platform
    fill("red")
-   rect(130, 150, 100, 20);
+   rect(130, 650, 100, 20);
    
    
   // speler

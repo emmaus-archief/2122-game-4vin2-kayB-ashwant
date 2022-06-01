@@ -75,13 +75,18 @@ var img // plaatje
       spelerY < 650 &&
       spelerY > 650 -20) 
       {
-        spelerY = 630
+        //spelerY = 630
         console.log("SPRING")
-       aanHetSpringen = false
-        if (spelerX < 130 || 
-           spelerX > 230) 
+       //aanHetSpringen = false
+        if (spelerX < 130 && 
+           spelerX > 230 &&
+           spelerY < 650 &&
+           spelerY > 650 -20) 
           { aanHetSpringen = true
           
+        }
+        else {
+          aanHetSpringen = false
         }
       }
 
@@ -119,7 +124,7 @@ var verwerkBotsing = function () {
     spelerX - vijandX < 53 &&
     spelerX - vijandX > -52
   )
-  (spelStatus = SPELEN)
+  (spelStatus = GAMEOVER)
   // botsing kogel tegen vijand
 
   // update punten en health

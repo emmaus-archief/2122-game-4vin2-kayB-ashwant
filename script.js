@@ -22,6 +22,11 @@ var vijandY = 200; // y-positie van vijand
 var springSnelheid = 0; // snelheid van sprong
 var aanHetSpringen = false // sprong
 var img // plaatje
+var platformpjeX= 300;
+var platformpjeY= 520;
+var platformBreedte= 300;
+var platformHoogte= 10;
+
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
 /* ********************************************* */
@@ -70,19 +75,19 @@ var img // plaatje
 
   
   //platorm
-  if (spelerX > 130 &&
-      spelerX < 230 &&
-      spelerY < 650 &&
-      spelerY > 650 -20) 
+  if (spelerX > platformpjeX &&
+      spelerX < platformBreedte + platformpjeX &&
+      spelerY < platformpjeY &&
+      spelerY > platformpjeY -platformHoogte) 
       {
-        //spelerY = 630
+        spelerY = platformpjeY - platformHoogte - 10
         console.log("SPRING")
-       //aanHetSpringen = false
-        if (spelerX < 130 && 
-           spelerX > 230 &&
-           spelerY < 650 &&
-           spelerY > 650 -20) 
-          { aanHetSpringen = true
+       
+        if (spelerX < platformpjeX && 
+           spelerX > platformBreedte + platformpjeX &&
+           spelerY < platformpjeY &&
+           spelerY > platformpjeY -platformHoogte) 
+          { 
           
         }
         else {
@@ -124,7 +129,7 @@ var verwerkBotsing = function () {
     spelerX - vijandX < 53 &&
     spelerX - vijandX > -52
   )
-  (spelStatus = GAMEOVER)
+  (spelStatus = SPELEN)
   // botsing kogel tegen vijand
 
   // update punten en health
@@ -154,7 +159,7 @@ var tekenAlles = function () {
   
    // platform
    fill("red")
-   rect(130, 650, 100, 20);
+   rect(platformpjeX, platformpjeY, platformBreedte, platformHoogte);
    
    
   // speler

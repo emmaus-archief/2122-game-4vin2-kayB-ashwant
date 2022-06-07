@@ -26,7 +26,10 @@ var platformpjeX= 300;
 var platformpjeY= 520;
 var platformBreedte= 300;
 var platformHoogte= 10;
-
+var muntX = 200
+var muntY = 400
+var punten = 0;
+var platformSpeed = 1;
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
 /* ********************************************* */
@@ -95,6 +98,14 @@ var platformHoogte= 10;
         }
       }
 
+      if (platformpjeX > 300 - 1 && 
+        platformpjeX < 500 + 1) {
+          platformpjeX = platformpjeX + platformSpeed}
+          if (platformpjeX === 500 || 
+             platformpjeX === 300) {
+            platformSpeed = platformSpeed * - 1
+            }
+       
 
   
   // vijand
@@ -133,6 +144,12 @@ var verwerkBotsing = function () {
   // botsing kogel tegen vijand
 
   // update punten en health
+ if(spelerY - muntY <62 &&
+  spelerY - muntY > -40 &&
+  spelerX - muntX < 53 &&
+  spelerX - muntX > -52  ) {
+    punten = punten+1
+  }
 
 };
 
@@ -171,8 +188,11 @@ var tekenAlles = function () {
     image(img, spelerX-50, spelerY-50, 100,77)
     
   // punten en health
-  
+  fill("red");
+  textSize(50);
+  text("punten = "+punten, 100,100);
 
+  ellipse (muntX,muntY,100,100)
 };
 /**
  * return true als het gameover is

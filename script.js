@@ -22,6 +22,7 @@ var vijandY = 200; // y-positie van vijand
 var springSnelheid = 0; // snelheid van sprong
 var aanHetSpringen = false // sprong
 var img // plaatje
+var img2 // plaatje2
 var platformpjeX= 300;
 var platformpjeY= 520;
 var platformBreedte= 300;
@@ -144,10 +145,10 @@ var verwerkBotsing = function () {
   // botsing kogel tegen vijand
 
   // update punten en health
- if(spelerY - muntY <62 &&
+ if(spelerY - muntY < 120 &&
   spelerY - muntY > -40 &&
-  spelerX - muntX < 53 &&
-  spelerX - muntX > -52  ) {
+  spelerX - muntX < 140 &&
+  spelerX - muntX > -20  ) {
     punten = punten+1
   }
 
@@ -181,18 +182,14 @@ var tekenAlles = function () {
    
   // speler
   
-
-    /*fill("white"); rect(spelerX - 25, spelerY - 25, 50, 50); 
-    fill("black"); 
-    ellipse(spelerX, spelerY, 10, 10); */
-    image(img, spelerX-50, spelerY-50, 100,77)
+    image(img, spelerX-50, spelerY-50, 100, 77)
     
   // punten en health
   fill("red");
   textSize(50);
   text("punten = "+punten, 100,100);
 
-  ellipse (muntX,muntY,100,100)
+  image(img2, muntX, muntY, 100, 100)
 };
 /**
  * return true als het gameover is
@@ -209,6 +206,7 @@ var checkGameOver = function () {
 
   function preload() {
   img = loadImage('plaatjes/Goomba-icon.png');
+  img2 = loadImage('plaatjes/mariomuntie.png');
   }
   
 

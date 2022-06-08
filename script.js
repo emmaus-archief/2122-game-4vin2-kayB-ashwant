@@ -23,14 +23,14 @@ var vijandY = 200; // y-positie van vijand
 var springSnelheid = 0; // snelheid van sprong
 var valSnelheid = 0;
 var aanHetSpringen = false // sprong
-var aanHetVallen = false
+var Zwaartekracht = false //val
 var img // plaatje1
 var img2 // plaatje2
 var img3 // plaatje3
 var img4 // plaatje4
-var platformpjeX= 300;
-var platformpjeY= 520;
-var platformBreedte= 300;
+var platformpjeX= 150;
+var platformpjeY= 570;
+var platformBreedte= 200;
 var platformHoogte= 10;
 var muntX = 1170;
 var muntY = 600;
@@ -66,16 +66,17 @@ var platformSpeed = 1;
 
 
   if (aanHetSpringen === false && keyIsDown(32)) { // start met springen
-    springSnelheid = 10;
+    springSnelheid = 13;
     aanHetSpringen = true;
   }
   if (aanHetSpringen === true) { // bezig met springen
     spelerY = spelerY - springSnelheid ;
     springSnelheid = springSnelheid - 0.2 ;
   }
-  if (aanHetSpringen === true && spelerY > 720-30) { // klaar met springen
+
+  if (springSnelheid < 0 ) { // klaar met springen
+    springSnelheid = 0;
     aanHetSpringen = false;
-    spelerY = 720-25;
   }
 
   if(spelerX < 0) {
@@ -86,41 +87,38 @@ var platformSpeed = 1;
   }
   
   //platorm
-  if (spelerX > platformpjeX &&
-      spelerX < platformBreedte + platformpjeX &&
-      spelerY < platformpjeY &&
-      spelerY > platformpjeY -platformHoogte) 
-      {
-        spelerY = platformpjeY - platformHoogte - 10
-        console.log("SPRING")
-       
-        if (spelerX < platformpjeX && 
-           spelerX > platformBreedte + platformpjeX &&
-           spelerY < platformpjeY &&
-           spelerY > platformpjeY -platformHoogte) 
-          { 
-          aanHetSpringen = true
+
+      if( Zwaartekracht === false ) {
+        valSnelheid = 0;
+        Zwaartekracht = true;
         }
-        else {
-          aanHetSpringen = false
+        if(Zwaartekracht === true){
+          spelerY = spelerY - valSnelheid;
+          valSnelheid = valSnelheid - 0.2;
         }
-      }
-      if( aanHetVallen === false && 
-        spelerX < platformpjeX && 
-        spelerX > platformBreedte + platformpjeX &&
-        spelerY < platformpjeY &&
-        spelerY > platformpjeY -platformHoogte) {
-        valSnelheid = 5;
-        aanHetVallen = true;
+        if (Zwaartekracht === true && 
+          spelerY > 720-30) { // klaar met vallen
+          Zwaartekracht = false;
+          spelerY = 720-25;
+        }
+        if (Zwaartekracht === true && 
+          spelerX > platformpjeX &&
+          spelerX < platformpjeX + platformBreedte &&
+          spelerY > platformpjeY - 25 - 10 &&
+          spelerY <  platformpjeY) { // klaar met vallen
+          spelerY = platformpjeY-25;
+          Zwaartekracht = false;
+          springSnelheid = 0
         }
 
 
       //platform movement
-      if (platformpjeX > 300 - 1 && 
-        platformpjeX < 500 + 1) {
-          platformpjeX = platformpjeX + platformSpeed}
-          if (platformpjeX === 500 || 
-             platformpjeX === 300) {
+      if (platformpjeX > platformpjeX - 1 && 
+        platformpjeX < platformpjeX + platformBreedte + 1) {
+          platformpjeX = platformpjeX + platformSpeed
+        }
+          if (platformpjeX === 350 || 
+             platformpjeX === 150) {
             platformSpeed = platformSpeed * - 1
             }
        
@@ -313,5 +311,5 @@ spelStatus = SPELEN;
   }
 }
 
-if(spelStatus === UITLEGPLUS)
+//if(spelStatus === UITLEGPLUS)
 }

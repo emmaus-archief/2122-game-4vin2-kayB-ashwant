@@ -13,6 +13,7 @@
 const SPELEN = 1;
 const GAMEOVER = 2;
 const UITLEG = 3;
+const UITLEGPLUS = 4;
 var spelStatus = UITLEG;
 
 var spelerX = 600; // x-positie van speler
@@ -23,8 +24,10 @@ var springSnelheid = 0; // snelheid van sprong
 var valSnelheid = 0;
 var aanHetSpringen = false // sprong
 var aanHetVallen = false
-var img // plaatje
+var img // plaatje1
 var img2 // plaatje2
+var img3 // plaatje3
+var img4 // plaatje4
 var platformpjeX= 300;
 var platformpjeY= 520;
 var platformBreedte= 300;
@@ -192,8 +195,8 @@ var verwerkBotsing = function () {
  */
 var tekenAlles = function () {
   // achtergrond
-    fill('blue')
-     rect(0,0,1280,720)
+    //fill('blue')
+     image(img3,0,0,1280,720)
      
  // vijand
  fill('black')
@@ -240,6 +243,8 @@ var checkGameOver = function () {
   function preload() {
   img = loadImage('plaatjes/Goomba-icon.png');
   img2 = loadImage('plaatjes/mariomuntie.png');
+  img3 = loadImage('plaatjes/achtergrondmetspelen.jpeg');
+  img4 = loadImage('plaatjes/Yoshibeter.jpg')
   }
   
 
@@ -255,7 +260,7 @@ function setup() {
   createCanvas(1280,720);
 
   // Kleur de achtergrond blauw, zodat je het kunt zien
-  background('blue');
+  //background('blue');
 }
 
 /**
@@ -290,10 +295,15 @@ if (spelStatus === UITLEG) {
   // teken uitleg scherm
   console.log("Uitleg");
    rect(0,0,1280,720);
-  fill(0,0,0);
-  text('Druk "enter" voor spelen', 100,100);
+   
+  background(img4,0,0,1280,720)
+  fill(255,255,255);
+  text('Rechts: D  ', 450,100);
+  text('Links: A ', 450,200);
+  text('Springen: Spatie ', 450,300);
+  text('Sprint: Secret hehe ', 450,400);
+  text('Start: enter ', 450,500);
   textSize(50);
-  fill(0,0,255);
   if (keyIsDown(13)){ // enter
     spelerX = 350
     spelerY = 695
@@ -302,4 +312,6 @@ if (spelStatus === UITLEG) {
 spelStatus = SPELEN;
   }
 }
+
+if(spelStatus === UITLEGPLUS)
 }

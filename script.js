@@ -12,9 +12,9 @@
 
 const SPELEN = 1;
 const GAMEOVER = 2;
-const UITLEG = 3;
-const UITLEGPLUS = 4;
-var spelStatus = UITLEG;
+const HOME = 3;
+const UITLEG = 4;
+var spelStatus = HOME;
 
 var spelerX = 600; // x-positie van speler
 var spelerY = 720-25; // y-positie van speler
@@ -28,6 +28,7 @@ var img // plaatje1
 var img2 // plaatje2
 var img3 // plaatje3
 var img4 // plaatje4
+var img5 // plaatje5
 var platformpjeX= 150;
 var platformpjeY= 570;
 var platformBreedte= 200;
@@ -36,6 +37,8 @@ var muntX = 1170;
 var muntY = 600;
 var punten = 0;
 var platformSpeed = 1;
+var nu = false;
+var net = false;
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
 /* ********************************************* */
@@ -66,7 +69,7 @@ var platformSpeed = 1;
 
 
   if (aanHetSpringen === false && keyIsDown(32)) { // start met springen
-    springSnelheid = 13;
+    springSnelheid = 13.3;
     aanHetSpringen = true;
   }
   if (aanHetSpringen === true) { // bezig met springen
@@ -243,6 +246,7 @@ var checkGameOver = function () {
   img2 = loadImage('plaatjes/mariomuntie.png');
   img3 = loadImage('plaatjes/achtergrondmetspelen.jpeg');
   img4 = loadImage('plaatjes/Yoshibeter.jpg')
+  img5 = loadImage('plaatjes/marioachtergrondwerk.jpg')
   }
   
 
@@ -281,35 +285,54 @@ function draw() {
     console.log("Game over")
      textSize(50);
      fill(0,0,0);
-    text('verloren, klik BACKSPACE voor uitleg',100,100);
+    text('verloren, klik BACKSPACE voor HOME',100,100);
     if (keyIsDown(8)) { // Backspace
-      spelStatus = UITLEG;
+      spelStatus = HOME;
     }
   }
 
 
 
-if (spelStatus === UITLEG) {
+if (spelStatus === HOME) {
   // teken uitleg scherm
-  console.log("Uitleg");
+  console.log("HOME");
    rect(0,0,1280,720);
    
   background(img4,0,0,1280,720)
   fill(255,255,255);
-  text('Rechts: D  ', 450,100);
-  text('Links: A ', 450,200);
-  text('Springen: Spatie ', 450,300);
-  text('Sprint: Secret hehe ', 450,400);
-  text('Start: enter ', 450,500);
+  text('Start: enter ', 450,100);
+  text('Uitleg: Backspace ', 450,200);
   textSize(50);
-  if (keyIsDown(13)){ // enter
-    spelerX = 350
-    spelerY = 695
-    vijandX = 900
-    vijandY = 200
-spelStatus = SPELEN;
-  }
+
+  if (keyIsDown(8)){ // Backspace
+spelStatus = UITLEG;
+ }
+ net = nu
+ nu = keyIsDown(13) // enter
+ if(net === false && 
+  nu === true) { // enter 
+ spelStatus = SPELEN
+ } 
 }
 
-//if(spelStatus === UITLEGPLUS)
+if(spelStatus === UITLEG) {
+  // teken UITLEGPLUS scherm
+  console.log ("UITLEG")
+  rect (0,0,1280,720);
+
+  background(img5,0,0,1280,720)
+  fill(255,255,255)
+  text('Rechts: D  ', 700,100);
+  text('Links: A ', 700,200);
+  text('Springen: Spatie ', 700,300);
+  text('Sprint: Secret hehe ', 700,400);
+  text('Home: Enter ', 700,500);
+  textSize(50);
+  net = nu
+  nu = keyIsDown(13)
+  if (net === false && 
+    nu === true){ 
+spelStatus = HOME;
+  }
+}
 }

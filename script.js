@@ -29,6 +29,7 @@ var img2 // plaatje2
 var img3 // plaatje3
 var img4 // plaatje4
 var img5 // plaatje5
+var img6 // plaatje6
 var platformpjeX= 150;
 var platformpjeY= 570;
 var platformBreedte= 200;
@@ -159,7 +160,7 @@ var verwerkBotsing = function () {
     spelerX - vijandX < 53 &&
     spelerX - vijandX > -52
   )
-  (spelStatus = SPELEN)
+  (spelStatus = GAMEOVER)
   // botsing kogel tegen vijand
 
   // update punten en health
@@ -247,6 +248,7 @@ var checkGameOver = function () {
   img3 = loadImage('plaatjes/achtergrondmetspelen.jpeg');
   img4 = loadImage('plaatjes/Yoshibeter.jpg')
   img5 = loadImage('plaatjes/marioachtergrondwerk.jpg')
+  img6 = loadImage('gameoverlol.jpg')
   }
   
 
@@ -283,12 +285,19 @@ function draw() {
   if (spelStatus === GAMEOVER) {
     // teken game-over scherm
     console.log("Game over")
-     textSize(50);
-     fill(0,0,0);
-    text('verloren, klik BACKSPACE voor HOME',100,100);
-    if (keyIsDown(8)) { // Backspace
+    rect(0,0,1280,720);
+
+    background(img6,0,0,1280,720);
+    fill(255,255,255);
+    text('Start: enter', 450,100);
+    textSize(50);
+
+    net = nu
+    nu = keyIsDown(13) // enter
+    if(net === false && 
+     nu === true) {
       spelStatus = HOME;
-    }
+     }
   }
 
 
@@ -310,8 +319,8 @@ spelStatus = UITLEG;
  net = nu
  nu = keyIsDown(13) // enter
  if(net === false && 
-  nu === true) { // enter 
- spelStatus = SPELEN
+  nu === true) { 
+ spelStatus = SPELEN;
  } 
 }
 

@@ -27,8 +27,8 @@ var platformpjeX= 300;
 var platformpjeY= 520;
 var platformBreedte= 300;
 var platformHoogte= 10;
-var muntX = 200
-var muntY = 400
+var muntX = 1170
+var muntY = 600
 var punten = 0;
 var platformSpeed = 1;
 /* ********************************************* */
@@ -149,9 +149,29 @@ var verwerkBotsing = function () {
   spelerY - muntY > -40 &&
   spelerX - muntX < 140 &&
   spelerX - muntX > -20  ) {
-    punten = punten+1
+    punten = punten+1 
   }
 
+   if( muntX === 1170 &&
+    muntY === 600 &&
+    spelerY - muntY < 120 &&
+    spelerY - muntY > -40 &&
+    spelerX - muntX < 140 &&
+    spelerX - muntX > -20  ) {
+      muntY = muntY - 500 ;
+      muntX = muntX -100
+    } 
+
+    if ( muntX === 1070 && 
+      muntY === 300 && 
+      spelerY - muntY < 120 &&
+      spelerY - muntY > -40 &&
+      spelerX - muntX < 140 &&
+      spelerX - muntX > -20) {
+        muntX = muntX - 300
+      }
+
+      
 };
 
 /**

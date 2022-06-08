@@ -20,15 +20,17 @@ var spelerY = 720-25; // y-positie van speler
 var vijandX = 600; // x-positie van vijand
 var vijandY = 200; // y-positie van vijand
 var springSnelheid = 0; // snelheid van sprong
+var valSnelheid = 0;
 var aanHetSpringen = false // sprong
+var aanHetVallen = false
 var img // plaatje
 var img2 // plaatje2
 var platformpjeX= 300;
 var platformpjeY= 520;
 var platformBreedte= 300;
 var platformHoogte= 10;
-var muntX = 1170
-var muntY = 600
+var muntX = 1170;
+var muntY = 600;
 var punten = 0;
 var platformSpeed = 1;
 /* ********************************************* */
@@ -43,25 +45,21 @@ var platformSpeed = 1;
   var speed = 6
   if (keyIsDown(68) || keyIsDown(RIGHT_ARROW)){
      spelerX = spelerX + speed
+     if ( keyIsDown(16)){ // shift
+      spelerX = spelerX + speed * 1.0; // extra snelheid
+    };
   };
   if (keyIsDown(65) || keyIsDown(LEFT_ARROW)){
     spelerX = spelerX - speed
+     if( keyIsDown(16)){
+      spelerX = spelerX - speed * 1.0 //extra snelheid
  };
+};
  
 
 
-  if (keyIsDown(68) && keyIsDown(16)){
-    spelerX = spelerX + speed * 2
-  };
-  if (keyIsDown(65) && keyIsDown(16)){
-    spelerX = spelerX - speed * 2
-  };
-  if (keyIsDown(LEFT_ARROW) && keyIsDown(16)){
-    spelerX = spelerX - speed * 2
-  };
-  if (keyIsDown(RIGHT_ARROW) && keyIsDown(16)){
-    spelerX = spelerX + speed * 2
-  };
+
+  
 
 
   if (aanHetSpringen === false && keyIsDown(32)) { // start met springen
@@ -77,6 +75,12 @@ var platformSpeed = 1;
     spelerY = 720-25;
   }
 
+  if(spelerX < 0) {
+    spelerX = 0
+  }
+  if(spelerX > 1280) {
+    spelerX = 1280
+  }
   
   //platorm
   if (spelerX > platformpjeX &&
@@ -92,13 +96,23 @@ var platformSpeed = 1;
            spelerY < platformpjeY &&
            spelerY > platformpjeY -platformHoogte) 
           { 
-          
+          aanHetSpringen = true
         }
         else {
           aanHetSpringen = false
         }
       }
+      if( aanHetVallen === false && 
+        spelerX < platformpjeX && 
+        spelerX > platformBreedte + platformpjeX &&
+        spelerY < platformpjeY &&
+        spelerY > platformpjeY -platformHoogte) {
+        valSnelheid = 5;
+        aanHetVallen = true;
+        }
 
+
+      //platform movement
       if (platformpjeX > 300 - 1 && 
         platformpjeX < 500 + 1) {
           platformpjeX = platformpjeX + platformSpeed}
@@ -145,33 +159,32 @@ var verwerkBotsing = function () {
   // botsing kogel tegen vijand
 
   // update punten en health
- if(spelerY - muntY < 120 &&
-  spelerY - muntY > -40 &&
-  spelerX - muntX < 140 &&
-  spelerX - muntX > -20  ) {
-    punten = punten+1 
-  }
-
-   if( muntX === 1170 &&
-    muntY === 600 &&
-    spelerY - muntY < 120 &&
+  if(spelerY - muntY < 120 &&
     spelerY - muntY > -40 &&
     spelerX - muntX < 140 &&
     spelerX - muntX > -20  ) {
-      muntY = muntY - 500 ;
-      muntX = muntX -100
-    } 
-
-    if ( muntX === 1070 && 
-      muntY === 300 && 
+      punten = punten+1 
+    }
+  
+     if( muntX === 1170 &&
+      muntY === 600 &&
       spelerY - muntY < 120 &&
       spelerY - muntY > -40 &&
       spelerX - muntX < 140 &&
-      spelerX - muntX > -20) {
-        muntX = muntX - 300
-      }
+      spelerX - muntX > -20  ) {
+        muntY = muntY - 500 ;
+        muntX = muntX -100
+      } 
+  
+      if ( muntX === 1070 && 
+        muntY === 300 && 
+        spelerY - muntY < 120 &&
+        spelerY - muntY > -40 &&
+        spelerX - muntX < 140 &&
+        spelerX - muntX > -20) {
+          muntX = muntX - 300
+        }
 
-      
 };
 
 /**

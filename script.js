@@ -185,17 +185,18 @@ var verwerkBotsing = function () {
       spelerY - muntY > -40 &&
       spelerX - muntX < 140 &&
       spelerX - muntX > -20  ) {
-        muntY = muntY - 500 ;
-        muntX = muntX -100
+        muntY = muntY - 500;
+        muntX = muntX -100;
       } 
   
       if ( muntX === 1070 && 
-        muntY === 300 && 
+        muntY === 100 && 
         spelerY - muntY < 120 &&
         spelerY - muntY > -40 &&
         spelerX - muntX < 140 &&
         spelerX - muntX > -20) {
-          muntX = muntX - 300
+          muntY = muntY - 100;
+          muntX = muntX - 900;
         }
 
 };
@@ -283,7 +284,7 @@ function setup() {
  * de code in deze functie wordt 50 keer per seconde
  * uitgevoerd door de p5 library, nadat de setup functie klaar is
  */
-function draw() {
+ function draw() {
   if (spelStatus === SPELEN) {
     beweegAlles();
     verwerkBotsing();
@@ -331,6 +332,10 @@ spelStatus = UITLEG;
  nu = keyIsDown(13) // enter
  if(net === false && 
   nu === true) { 
+    spelerX = 100;
+    spelerY = 720;
+    vijandX = 600;
+    vijandY = 400
  spelStatus = SPELEN;
  } 
 }
@@ -342,8 +347,8 @@ if(spelStatus === UITLEG) {
 
   background(img5,0,0,1280,720)
   fill(255,255,255)
-  text('Rechts: D  ', 700,100);
-  text('Links: A ', 700,200);
+  text('Rechts: D of →', 700,100);
+  text('Links: A of ←', 700,200);
   text('Springen: Spatie ', 700,300);
   text('Sprint: Secret hehe ', 700,400);
   text('Home: Enter ', 700,500);

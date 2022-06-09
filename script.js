@@ -30,8 +30,8 @@ var img3 // plaatje3
 var img4 // plaatje4
 var img5 // plaatje5
 var img6 // plaatje6
-var platformpjeX= 150;
-var platformpjeY= 570;
+var platformX1= 150;
+var platformY1= 570;
 var platformBreedte= 200;
 var platformHoogte= 10;
 var muntX = 1170;
@@ -106,26 +106,34 @@ var net = false;
           spelerY = 720-25;
         }
         if (Zwaartekracht === true && 
-          spelerX > platformpjeX &&
-          spelerX < platformpjeX + platformBreedte &&
-          spelerY > platformpjeY - 25 - 10 &&
-          spelerY <  platformpjeY) { // klaar met vallen
-          spelerY = platformpjeY-25;
+          spelerX > platformX1 &&
+          spelerX < platformX1 + platformBreedte &&
+          spelerY > platformY1 - 25 - 10 &&
+          spelerY <  platformY1) { // klaar met vallen
+          spelerY = platformY1-25;
           Zwaartekracht = false;
           springSnelheid = 0
         }
 
 
       //platform movement
-      if (platformpjeX > platformpjeX - 1 && 
-        platformpjeX < platformpjeX + platformBreedte + 1) {
-          platformpjeX = platformpjeX + platformSpeed
+      if (platformX1 > platformX1 - 1 && 
+        platformX1 < platformX1 + platformBreedte + 1) {
+          platformX1 = platformX1 + platformSpeed
         }
-          if (platformpjeX === 350 || 
-             platformpjeX === 150) {
+          if (platformX1 === 350 || 
+             platformX1 === 150) {
             platformSpeed = platformSpeed * - 1
             }
        
+      if (platformX1 > platformX1 - 1 && 
+        platformX1 < platformX1 + platformBreedte + 1) {
+          platformX1 = platformX1 + platformSpeed
+         }
+           if (platformX1 === 350 || 
+          platformX1 === 150) {
+           platformSpeed = platformSpeed * - 1
+            }
 
   
   // vijand
@@ -215,7 +223,10 @@ var tekenAlles = function () {
   
    // platform
    fill("red")
-   rect(platformpjeX, platformpjeY, platformBreedte, platformHoogte);
+   rect(platformX1, platformY1, platformBreedte, platformHoogte);
+   
+   fill("red")
+   rect(platformX2, platformY2, platformBreedte, platformHoogte);
    
    
   // speler

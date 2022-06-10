@@ -14,28 +14,33 @@ const SPELEN = 1;
 const GAMEOVER = 2;
 const HOME = 3;
 const UITLEG = 4;
+const GEWONNEN = 5;
 var spelStatus = HOME;
 
 var spelerX = 600; // x-positie van speler
 var spelerY = 720-25; // y-positie van speler
+var speed = 6; // snelheid speler
 var vijandX = 600; // x-positie van vijand
 var vijandY = 200; // y-positie van vijand
+var vijandSpeed = 2.5; // Snelheid van vijand
 var springSnelheid = 0; // snelheid van sprong
 var valSnelheid = 0;
-var aanHetSpringen = false // sprong
-var Zwaartekracht = false //val
+var aanHetSpringen = false; // sprong
+var Zwaartekracht = false; //val
 var img // plaatje1
 var img2 // plaatje2
 var img3 // plaatje3
 var img4 // plaatje4
 var img5 // plaatje5
 var img6 // plaatje6
+var img7 // plaatje 7
+var img8 // plaatje 8
 var platformX1= 150;
 var platformY1= 570;
 var platformX2= 800;
 var platformY2= 450;
 var platformBreedte= 200;
-var platformHoogte= 10;
+var platformHoogte= 45;
 var muntX = 1170;
 var muntY = 600;
 var punten = 0;
@@ -52,7 +57,7 @@ var net = false;
  */
  var beweegAlles = function () {
   // speler
-  var speed = 6
+  
   if (keyIsDown(68) || keyIsDown(RIGHT_ARROW)){
      spelerX = spelerX + speed
      if ( keyIsDown(16) && spelerY < 350){ // shift
@@ -163,7 +168,7 @@ var net = false;
 
   
   // vijand
-  var vijandSpeed = 4
+  
 
   if (spelerX > vijandX) {
     vijandX = vijandX + vijandSpeed
@@ -224,7 +229,9 @@ var verwerkBotsing = function () {
           muntY = muntY - 100;
           muntX = muntX - 900;
         }
-
+      if(punten === 3){
+        spelStatus = GEWONNEN;
+      }
 };
 
 /**
@@ -234,6 +241,7 @@ var tekenAlles = function () {
   // achtergrond
     //fill('blue')
      image(img3,0,0,1280,720)
+     
      
  // vijand
  fill('black')
@@ -249,23 +257,22 @@ var tekenAlles = function () {
  triangle(vijandX +1,vijandY + 26, vijandX + 15, vijandY +40, vijandX +26, vijandY +26)
   
    // platform
-   fill("red")
-   rect(platformX1, platformY1, platformBreedte, platformHoogte);
+   image(img7,platformX1, platformY1, platformBreedte, platformHoogte);
    
-   fill("red")
-   rect(platformX2, platformY2, platformBreedte, platformHoogte);
+   image(img7,platformX2, platformY2, platformBreedte, platformHoogte);
    
    
   // speler
   
-    image(img, spelerX-50, spelerY-50, 100, 77)
+    image(img, spelerX-50, spelerY-50, 100, 77);
     
   // punten en health
-  fill("red");
-  textSize(50);
-  text("punten = "+punten, 100,100);
+  //fill("red");
+ // textSize(50);
+  image(img2,10,10,50,50);
+  text(punten ,55 ,53 );
 
-  image(img2, muntX, muntY, 100, 100)
+  image(img2, muntX, muntY, 100, 100);
 };
 /**
  * return true als het gameover is
@@ -284,9 +291,11 @@ var checkGameOver = function () {
   img = loadImage('plaatjes/Goomba-icon.png');
   img2 = loadImage('plaatjes/mariomuntie.png');
   img3 = loadImage('plaatjes/achtergrondmetspelen.jpeg');
-  img4 = loadImage('plaatjes/Yoshibeter.jpg')
-  img5 = loadImage('plaatjes/marioachtergrondwerk.jpg')
-  img6 = loadImage('plaatjes/gameoverlol.jpg')
+  img4 = loadImage('plaatjes/Yoshibeter.jpg');
+  img5 = loadImage('plaatjes/marioachtergrondwerk.jpg');
+  img6 = loadImage('plaatjes/gameoverlol.jpg');
+  img7 = loadImage('plaatjes/platformding.png');
+  img8 = loadImage('plaatjes/victorieus.jpg');
   }
   
 
@@ -302,7 +311,7 @@ function setup() {
   createCanvas(1280,720);
 
   // Kleur de achtergrond blauw, zodat je het kunt zien
-  //background('blue');
+  
 }
 
 /**
@@ -318,11 +327,11 @@ function setup() {
     if (checkGameOver()) {
       spelStatus = GAMEOVER;
     }
-    console.log("Spelen")
+    console.log("Spelen");
   }
   if (spelStatus === GAMEOVER) {
      //teken game-over scherm
-    console.log("Game over")
+    console.log("Game over");
     rect(0,0,1280,720);
 
     background(img6,0,0,1280,720);
@@ -331,7 +340,7 @@ function setup() {
     textSize(50);
 
     net = nu
-    nu = keyIsDown(13) // enter
+    nu = keyIsDown(13); // enter
      if(net === false && 
     nu === true) {
       spelStatus = HOME;
@@ -345,7 +354,7 @@ if (spelStatus === HOME) {
   console.log("HOME");
    rect(0,0,1280,720);
    
-  background(img4,0,0,1280,720)
+  background(img4,0,0,1280,720);
   fill(255,255,255);
   text('Start: enter ', 450,100);
   text('Uitleg: Backspace ', 450,200);
@@ -355,35 +364,61 @@ if (spelStatus === HOME) {
 spelStatus = UITLEG;
  }
  net = nu
- nu = keyIsDown(13) // enter
+ nu = keyIsDown(13); // enter
  if(net === false && 
   nu === true) { 
     spelerX = 100;
     spelerY = 720;
     vijandX = 600;
-    vijandY = 400
+    vijandY = 400;
+    muntX = 1170;
+    muntY = 600;
+    punten = 0;
+    springSnelheid = 0;
  spelStatus = SPELEN;
  } 
 }
 
 if(spelStatus === UITLEG) {
   // teken UITLEGPLUS scherm
-  console.log ("UITLEG")
+  console.log ("UITLEG");
   rect (0,0,1280,720);
 
-  background(img5,0,0,1280,720)
-  fill(255,255,255)
+  background(img5,0,0,1280,720);
+  fill(255,255,255);
   text('Rechts: D of →', 700,100);
   text('Links: A of ←', 700,200);
   text('Springen: Spatie ', 700,300);
   text('Sprint: Secret hehe ', 700,400);
-  text('Home: Enter ', 700,500);
+  text('(tip werkt alleen boven lol) ', 700,461);
+  text('Home: Enter ', 700,561);
   textSize(50);
   net = nu
-  nu = keyIsDown(13)
+  nu = keyIsDown(13);
   if (net === false && 
     nu === true){ 
 spelStatus = HOME;
   }
+}
+
+if(spelStatus === GEWONNEN) {
+  // teken WINSCHERM
+  console.log ("winnen");
+  rect(0,0,1280,720);
+
+  background(img8,0,0,1280,720);
+  fill(255,255,255);
+  text('home: enter' ,540,550);
+  textSize(69);
+  text('GG YOU DID IT' ,400,200);
+  textSize (40);
+  image(img2,10,10,50,50);
+  text(punten ,55 ,52 )
+  net = nu
+  nu = keyIsDown(13);
+  if (net === false &&
+    nu === true){
+      spelStatus = HOME;
+    }
 }
 }

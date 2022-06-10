@@ -36,6 +36,9 @@ var img6 // plaatje6
 var img7 // plaatje7
 var img8 // plaatje8
 var img9 // plaatje9
+var FONT // font voor tekst
+var FONT2 // font voor tekst
+var FONT3 // font voor tekst
 var platformX1= 150;
 var platformY1= 570;
 var platformX2= 800;
@@ -294,12 +297,15 @@ var checkGameOver = function () {
   img = loadImage('plaatjes/Goomba-icon.png');
   img2 = loadImage('plaatjes/mariomuntie.png');
   img3 = loadImage('plaatjes/achtergrondmetspelen.jpeg');
-  img4 = loadImage('plaatjes/Yoshibeter.jpg');
+  img4 = loadImage('plaatjes/goombarushperfect.jpeg');
   img5 = loadImage('plaatjes/marioachtergrondwerk.jpg');
   img6 = loadImage('plaatjes/gameoverlol.jpg');
   img7 = loadImage('plaatjes/platformding.png');
   img8 = loadImage('plaatjes/victorieus.jpg');
-  img9 = loadImage('plaatjes/spoek.png')
+  img9 = loadImage('plaatjes/spoek.png');
+  FONT = loadFont('plaatjes/KdamThmorPro-Regular.ttf');
+  FONT2 = loadFont('plaatjes/PermanentMarker-Regular.ttf');
+  FONT3 = loadFont('plaatjes/Anton-Regular.ttf');
   }
   
 
@@ -334,10 +340,10 @@ function setup() {
      //teken game-over scherm
     console.log("Game over");
     rect(0,0,1280,720);
-
+    textFont(FONT);
     background(img6,0,0,1280,720);
     fill(255,255,255);
-    text('Start: enter', 450,100);
+    text('Start: enter', 500,100);
     textSize(50);
 
     net = nu
@@ -356,10 +362,22 @@ if (spelStatus === HOME) {
    rect(0,0,1280,720);
    
   background(img4,0,0,1280,720);
-  fill(255,255,255);
-  text('Start: enter ', 450,100);
-  text('Uitleg: Backspace ', 450,200);
+  
   textSize(50);
+  fill(255,255,255);
+  textFont(FONT);
+  text('Start: enter ',950,620);
+  text('Uitleg: Backspace ',869,670);
+  textSize(70);
+  fill(207,181,59);
+  textFont(FONT3);
+  text('OEMPA GOEMBA:',100,100);
+
+  textFont(FONT2);
+  textSize(50);
+  text('COIN RUSH',100,150);
+  
+  
 
   if (keyIsDown(8)){ // Backspace
 spelStatus = UITLEG;
@@ -387,11 +405,12 @@ if(spelStatus === UITLEG) {
 
   background(img5,0,0,1280,720);
   fill(255,255,255);
-  text('Rechts: D of →', 700,100);
-  text('Links: A of ←', 700,200);
+  textFont(FONT);
+  text('Rechts: D, Pijl rechts ', 700,100);
+  text('Links: A, Pijl links', 700,200);
   text('Springen: Spatie ', 700,300);
   text('Sprint: Secret hehe ', 700,400);
-  text('(tip werkt alleen boven lol) ', 700,461);
+  text('(tip werkt alleen boven) ', 700,461);
   text('Home: Enter ', 700,561);
   textSize(50);
   net = nu
@@ -409,6 +428,7 @@ if(spelStatus === GEWONNEN) {
 
   background(img8,0,0,1280,720);
   fill(255,255,255);
+  textFont(FONT);
   text('home: enter' ,540,550);
   textSize(69);
   text('GG YOU DID IT' ,400,200);

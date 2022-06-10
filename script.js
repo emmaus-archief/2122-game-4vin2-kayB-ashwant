@@ -33,8 +33,8 @@ var img3 // plaatje3
 var img4 // plaatje4
 var img5 // plaatje5
 var img6 // plaatje6
-var img7 // plaatje 7
-var img8 // plaatje 8
+var img7 // plaatje7
+var img8 // plaatje8
 var platformX1= 150;
 var platformY1= 570;
 var platformX2= 800;
@@ -119,9 +119,9 @@ var net = false;
         if (Zwaartekracht === true && 
           spelerX > platformX1 &&
           spelerX < platformX1 + platformBreedte &&
-          spelerY > platformY1 - 25 - 10 &&
+          spelerY > platformY1 - 10 - 10 &&
           spelerY <  platformY1) { // klaar met vallen
-          spelerY = platformY1-25;
+          spelerY = platformY1 - 10;
           Zwaartekracht = false;
           springSnelheid = 0
         }
@@ -130,9 +130,9 @@ var net = false;
         if (Zwaartekracht === true && 
           spelerX > platformX2 &&
           spelerX < platformX2 + platformBreedte &&
-          spelerY > platformY2 - 25 - 10 &&
+          spelerY > platformY2 - 10 - 10 &&
           spelerY <  platformY2) { // klaar met vallen
-          spelerY = platformY2-25;
+          spelerY = platformY2 - 10;
           Zwaartekracht = false;
           springSnelheid = 0
         }

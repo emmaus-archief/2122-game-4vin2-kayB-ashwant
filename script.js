@@ -35,6 +35,7 @@ var img5 // plaatje5
 var img6 // plaatje6
 var img7 // plaatje7
 var img8 // plaatje8
+var img9 // plaatje9
 var platformX1= 150;
 var platformY1= 570;
 var platformX2= 800;
@@ -192,14 +193,14 @@ var net = false;
  */
 var verwerkBotsing = function () {
   // botsing speler tegen vijand
-  
+  // 72 45 60 69
 
-  if (spelerY - vijandY < 62 &&
-    spelerY - vijandY > -40 &&
-    spelerX - vijandX < 53 &&
-    spelerX - vijandX > -52
+  if (spelerY - vijandY < 37.5 &&
+    spelerY - vijandY > -37.5 &&
+    spelerX - vijandX < 37.5 &&
+    spelerX - vijandX > -37.5
   )
-  (spelStatus = SPELEN)
+  (spelStatus = GAMEOVER)
   // botsing kogel tegen vijand
 
   // update punten en health
@@ -244,7 +245,9 @@ var tekenAlles = function () {
      
      
  // vijand
- fill('black')
+ image(img9, vijandX - 37.5, vijandY - 37.5, 75,75)
+ // Dit hieronder staat er omdat ik, Ashwant, hier hard aan had gewerkt en het wil laten staan :)
+ /*fill('black')
  rect(vijandX -50/2, vijandY -50/2 +10, 100/2, 100/2);
  fill('red')
  ellipse(vijandX - 30/2, vijandY - 10/2, 30/2,30/2)
@@ -254,7 +257,7 @@ var tekenAlles = function () {
  ellipse(vijandX, vijandY + 30, 80/2,10/2)
  fill('white')
  triangle(vijandX -25,vijandY + 26, vijandX - 15, vijandY +40, vijandX +1, vijandY +26)
- triangle(vijandX +1,vijandY + 26, vijandX + 15, vijandY +40, vijandX +26, vijandY +26)
+ triangle(vijandX +1,vijandY + 26, vijandX + 15, vijandY +40, vijandX +26, vijandY +26)*/
   
    // platform
    image(img7,platformX1, platformY1, platformBreedte, platformHoogte);
@@ -296,6 +299,7 @@ var checkGameOver = function () {
   img6 = loadImage('plaatjes/gameoverlol.jpg');
   img7 = loadImage('plaatjes/platformding.png');
   img8 = loadImage('plaatjes/victorieus.jpg');
+  img9 = loadImage('plaatjes/spoek.png')
   }
   
 
@@ -309,9 +313,6 @@ var checkGameOver = function () {
 function setup() {
   // Maak een canvas (rechthoek) waarin je je speelveld kunt tekenen
   createCanvas(1280,720);
-
-  // Kleur de achtergrond blauw, zodat je het kunt zien
-  
 }
 
 /**

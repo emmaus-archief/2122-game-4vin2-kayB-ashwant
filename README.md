@@ -1,12 +1,12 @@
 Deze game is gebaseerd op het template voor 4HV van het Emmauscollege Rotterdam
 
-## Mijn spel: *naam van het spel*
+## Mijn spel: *OEMPA GOEMBA: COIN RUSH*
 Gemaakt door:
-- *naam van leerling 1*
-- *naam van leerling 2*
+- *Ashwant Ganpat 4VA*
+- *Kay Bronder 4VA*
 
 ### Beschrijving
-*korte beschrijving van het spel, wat je kunt doen in het spel, wat het doel is*
+*Zorg ervoor dat je alle punten pakt. Het spel is zeker haalbaar. Gebruik de platformen om de punten te halen. Word niet geraakt door de enemy anders sterf je en ben je game over. Als je alle punten hebt, heb je het spel gewonnen, gefeliciteerd!*
 
 ## Mijn planning
 Werk de planning af van boven naar beneden<br>
@@ -22,37 +22,32 @@ Basis: uitleg, spelen, afgaan en punten
         - Kies de afmeting van speler
         - Gebruik variabalen spelerX en spelerY als middelpunt van de speler
 - [x] 4. *(pas de volgende stappen in de planning zelf aan)*
-- [ ] 5. enemy maken
-- [ ] 6. kogel maken die af wordt gevuurd door joch
-- [ ] 7. enemy auto target
-- [ ] 8. puntensysteem
-- [ ] 9. dood kunnen 
-- [ ] 10. game over scherm?
-- [ ] 11. menu maken
+- [x] 5. enemy maken
+- [x] 6. enemy auto target
+- [x] 7. platform maken
+- [x] 8. puntensysteem
+- [x] 9. dood kunnen 
+- [x] 10. game over scherm
+- [x] 11. menu's maken
 
 
 ### Uitbreidingen 1
-Uitbreiding: *bedenk iets, bijvoorbeeld meer tegenstanders*
-- [ ] *later uitwerken*
-- [ ] *later uitwerken*
-- [ ] *later uitwerken*
+Uitbreiding: *Beweging*
+- [x] *platform links rechts*
+- [x] *platform boven beneden*
 
 ### Uitbreidingen 2
-Uitbreiding: *bedenk iets, bijvoorbeeld bewegende achtergrond*
-- [ ] *later uitwerken*
-- [ ] *later uitwerken*
-- [ ] *later uitwerken*
+Uitbreiding: *Plaatjes*
+- [x] *Plaatje speler*
+- [x] *Plaatje achtergronden*
+- [x] *Plaatje punten*
+- [x] *Plaatje platform*
+- [x] *Plaatje enemy*
 
 ### Ideeen voor uitbreidingen
 Kies de uitbreidingen die je leuk vindt en maak je game nog mooier
-- [ ] Gebruik plaatjes voor de vijanden
-- [ ] Animeer speler
-- [ ] Laat badges vallen die extra's aan speler geven
-- [ ] Maak spel steeds moeilijker door toenemend aantal vijanden met tekenVijand
-- [ ] Maak andere vijanden bij toenemen tekenVijand
-- [ ] Laat vijanden bewegen in patronen
-- [ ] Maak bediening met touch of bewegen van telefoon mogelijk (zorg dat toetsenbordbediening ook blijft werken)
-- [ ] ...
+- [x] Gebruik plaatjes voor de vijanden
+- [x] Maak spel steeds moeilijker door platforming
 
 ## Documentatie
 - Khan Academy cursus JavaScript met p5js library <br>

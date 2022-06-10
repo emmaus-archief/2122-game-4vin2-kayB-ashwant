@@ -32,12 +32,15 @@ var img5 // plaatje5
 var img6 // plaatje6
 var platformX1= 150;
 var platformY1= 570;
+var platformX2= 800;
+var platformY2= 450;
 var platformBreedte= 200;
 var platformHoogte= 10;
 var muntX = 1170;
 var muntY = 600;
 var punten = 0;
-var platformSpeed = 1;
+var platformSpeed1 = 1;
+var platformSpeed2 = 1;
 var nu = false;
 var net = false;
 /* ********************************************* */
@@ -52,13 +55,13 @@ var net = false;
   var speed = 6
   if (keyIsDown(68) || keyIsDown(RIGHT_ARROW)){
      spelerX = spelerX + speed
-     if ( keyIsDown(16)){ // shift
+     if ( keyIsDown(16) && spelerY < 350){ // shift
       spelerX = spelerX + speed * 1.0; // extra snelheid
     };
   };
   if (keyIsDown(65) || keyIsDown(LEFT_ARROW)){
     spelerX = spelerX - speed
-     if( keyIsDown(16)){
+     if( keyIsDown(16) && spelerY < 350){
       spelerX = spelerX - speed * 1.0 //extra snelheid
  };
 };
@@ -84,11 +87,12 @@ var net = false;
   }
 
   if(spelerX < 0) {
-    spelerX = 0
+    spelerX = 0;
   }
   if(spelerX > 1280) {
-    spelerX = 1280
+    spelerX = 1280;
   }
+ 
   
   //platorm
 
@@ -105,6 +109,8 @@ var net = false;
           Zwaartekracht = false;
           spelerY = 720-25;
         }
+
+        //platform 1 zwaartekracht
         if (Zwaartekracht === true && 
           spelerX > platformX1 &&
           spelerX < platformX1 + platformBreedte &&
@@ -115,24 +121,44 @@ var net = false;
           springSnelheid = 0
         }
 
-
-      //platform movement
-      if (platformX1 > platformX1 - 1 && 
-        platformX1 < platformX1 + platformBreedte + 1) {
-          platformX1 = platformX1 + platformSpeed
+        //platform 2 zwaartekracht
+        if (Zwaartekracht === true && 
+          spelerX > platformX2 &&
+          spelerX < platformX2 + platformBreedte &&
+          spelerY > platformY2 - 25 - 10 &&
+          spelerY <  platformY2) { // klaar met vallen
+          spelerY = platformY2-25;
+          Zwaartekracht = false;
+          springSnelheid = 0
         }
-          if (platformX1 === 350 || 
-             platformX1 === 150) {
-            platformSpeed = platformSpeed * - 1
+
+
+
+      //platform 1 movement
+      if (platformX1 > platformX1 - 1 && 
+        platformX1 < platformX1 + platformBreedte + 1) 
+        {
+          platformX1 = platformX1 + platformSpeed1
+        }
+          
+        if (platformX1 === 350 || 
+             platformX1 === 150) 
+             {
+            platformSpeed1 = platformSpeed1 * - 1
             }
        
-      if (platformX1 > platformX1 - 1 && 
-        platformX1 < platformX1 + platformBreedte + 1) {
-          platformX1 = platformX1 + platformSpeed
+      
+      //platform 2 movement
+      if (platformY2 > platformY2 - 1 && 
+        platformY2 < platformY2 + platformHoogte + 1) 
+        {
+          platformY2 = platformY2 - platformSpeed2
          }
-           if (platformX1 === 350 || 
-          platformX1 === 150) {
-           platformSpeed = platformSpeed * - 1
+           
+         if (platformY2 === 300 || 
+          platformY2 === 450) 
+          {
+           platformSpeed2 = platformSpeed2 * - 1
             }
 
   

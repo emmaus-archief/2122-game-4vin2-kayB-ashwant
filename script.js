@@ -45,8 +45,8 @@ var platformX2= 800;
 var platformY2= 450;
 var platformBreedte= 200;
 var platformHoogte= 45;
-var muntX = 1170;
-var muntY = 600;
+var muntX = 1170; // x-positie munt
+var muntY = 600; // y-positie munt
 var punten = 0;
 var platformSpeed1 = 1;
 var platformSpeed2 = 1;
@@ -66,28 +66,22 @@ var net = false;
      spelerX = spelerX + speed
      if ( keyIsDown(16) && spelerY < 350){ // shift
       spelerX = spelerX + speed * 1.0; // extra snelheid
-    };
-  };
+    }
+  }
   if (keyIsDown(65) || keyIsDown(LEFT_ARROW)){
     spelerX = spelerX - speed
-     if( keyIsDown(16) && spelerY < 350){
+     if( keyIsDown(16) && spelerY < 350){ // shift
       spelerX = spelerX - speed * 1.0 //extra snelheid
- };
-};
- 
-
-
-
-  
-
+ }
+}
 
   if (aanHetSpringen === false && keyIsDown(32)) { // start met springen
     springSnelheid = 13.3;
     aanHetSpringen = true;
   }
   if (aanHetSpringen === true) { // bezig met springen
-    spelerY = spelerY - springSnelheid ;
-    springSnelheid = springSnelheid - 0.2 ;
+    spelerY = spelerY - springSnelheid;
+    springSnelheid = springSnelheid - 0.2;
   }
 
   if (springSnelheid < 0 ) { // klaar met springen
@@ -127,7 +121,7 @@ var net = false;
           spelerY <  platformY1) { // klaar met vallen
           spelerY = platformY1 - 10;
           Zwaartekracht = false;
-          springSnelheid = 0
+          springSnelheid = 0;
         }
 
         //platform 2 zwaartekracht
@@ -138,7 +132,7 @@ var net = false;
           spelerY <  platformY2) { // klaar met vallen
           spelerY = platformY2 - 10;
           Zwaartekracht = false;
-          springSnelheid = 0
+          springSnelheid = 0;
         }
 
 
@@ -173,22 +167,19 @@ var net = false;
   
   // vijand
   
-
   if (spelerX > vijandX) {
     vijandX = vijandX + vijandSpeed
-  };
+  }
   if (spelerY > vijandY) {
       vijandY = vijandY + vijandSpeed
-  };
+  }
   if (spelerX < vijandX) {
     vijandX = vijandX - vijandSpeed
-  };
+  }
   if (spelerY < vijandY) {
     vijandY = vijandY - vijandSpeed
-};
-  // kogel
-
- };
+}
+ }
 /**
  * Checkt botsingen
  * Verwijdert neergeschoten dingen
@@ -196,7 +187,6 @@ var net = false;
  */
 var verwerkBotsing = function () {
   // botsing speler tegen vijand
-  // 72 45 60 69
 
   if (spelerY - vijandY < 37.5 &&
     spelerY - vijandY > -37.5 &&
@@ -204,7 +194,6 @@ var verwerkBotsing = function () {
     spelerX - vijandX > -37.5
   )
   (spelStatus = GAMEOVER)
-  // botsing kogel tegen vijand
 
   // update punten en health
   if(spelerY - muntY < 120 &&
@@ -236,20 +225,20 @@ var verwerkBotsing = function () {
       if(punten === 3){
         spelStatus = GEWONNEN;
       }
-};
+}
 
 /**
  * Tekent spelscherm
  */
 var tekenAlles = function () {
   // achtergrond
-    //fill('blue')
-     image(img3,0,0,1280,720)
+     image(img3,0,0,1280,720);
      
      
  // vijand
- image(img9, vijandX - 37.5, vijandY - 37.5, 75,75)
+ image(img9, vijandX - 37.5, vijandY - 37.5, 75,75);
  // Dit hieronder staat er omdat ik, Ashwant, hier hard aan had gewerkt en het wil laten staan :)
+
  /*fill('black')
  rect(vijandX -50/2, vijandY -50/2 +10, 100/2, 100/2);
  fill('red')
@@ -273,13 +262,11 @@ var tekenAlles = function () {
     image(img, spelerX-50, spelerY-50, 100, 77);
     
   // punten en health
-  //fill("red");
- // textSize(50);
   image(img2,10,10,50,50);
   text(punten ,55 ,53 );
 
   image(img2, muntX, muntY, 100, 100);
-};
+}
 /**
  * return true als het gameover is
  * anders return false
@@ -287,7 +274,7 @@ var tekenAlles = function () {
 var checkGameOver = function () {
   // check of HP 0 is , of tijd op is, of ...
   return false;
-};
+}
 
 /* ********************************************* */
 /* setup() en draw() functies / hoofdprogramma   */
@@ -303,9 +290,9 @@ var checkGameOver = function () {
   img7 = loadImage('plaatjes/platformding.png');
   img8 = loadImage('plaatjes/victorieus.jpg');
   img9 = loadImage('plaatjes/spoek.png');
-  FONT = loadFont('plaatjes/KdamThmorPro-Regular.ttf');
-  FONT2 = loadFont('plaatjes/PermanentMarker-Regular.ttf');
-  FONT3 = loadFont('plaatjes/Anton-Regular.ttf');
+  FONT = loadFont('Fonts/KdamThmorPro-Regular.ttf');
+  FONT2 = loadFont('Fonts/PermanentMarker-Regular.ttf');
+  FONT3 = loadFont('Fonts/Anton-Regular.ttf');
   }
   
 
@@ -379,7 +366,7 @@ if (spelStatus === HOME) {
   
   
 
-  if (keyIsDown(8)){ // Backspace
+  if (keyIsDown(8)){ // backspace
 spelStatus = UITLEG;
  }
  net = nu
@@ -414,7 +401,7 @@ if(spelStatus === UITLEG) {
   text('Home: Enter ', 700,561);
   textSize(50);
   net = nu
-  nu = keyIsDown(13);
+  nu = keyIsDown(13); // enter
   if (net === false && 
     nu === true){ 
 spelStatus = HOME;
@@ -434,9 +421,9 @@ if(spelStatus === GEWONNEN) {
   text('GG YOU DID IT' ,400,200);
   textSize (40);
   image(img2,10,10,50,50);
-  text(punten ,55 ,52 )
+  text(punten ,55 ,52);
   net = nu
-  nu = keyIsDown(13);
+  nu = keyIsDown(13); // enter
   if (net === false &&
     nu === true){
       spelStatus = HOME;

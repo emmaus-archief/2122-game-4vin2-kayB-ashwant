@@ -39,6 +39,7 @@ var img9 // plaatje9
 var FONT // font voor tekst
 var FONT2 // font voor tekst
 var FONT3 // font voor tekst
+var FONT4 // font voor tekst
 var platformX1= 150;
 var platformY1= 570;
 var platformX2= 800;
@@ -263,8 +264,9 @@ var tekenAlles = function () {
     
   // punten en health
   image(img2,10,10,50,50);
+  fill(255,255,255)
   text(punten ,55 ,53 );
-
+  textFont(FONT4);
   image(img2, muntX, muntY, 100, 100);
 }
 /**
@@ -293,6 +295,7 @@ var checkGameOver = function () {
   FONT = loadFont('Fonts/KdamThmorPro-Regular.ttf');
   FONT2 = loadFont('Fonts/PermanentMarker-Regular.ttf');
   FONT3 = loadFont('Fonts/Anton-Regular.ttf');
+  FONT4 = loadFont('Fonts/Roboto-BlackItalic.ttf')
   }
   
 
@@ -329,10 +332,15 @@ function setup() {
     rect(0,0,1280,720);
     textFont(FONT);
     background(img6,0,0,1280,720);
+    textSize(50);
     fill(255,255,255);
     text('Start: enter', 500,100);
-    textSize(50);
+    
 
+    textSize (40);
+    textFont (FONT4);
+    image(img2,10,10,50,50);
+    text(punten ,55 ,52);
     net = nu
     nu = keyIsDown(13); // enter
      if(net === false && 
@@ -344,7 +352,7 @@ function setup() {
 
 
 if (spelStatus === HOME) {
-  //teken uitleg scherm
+  //teken HOME scherm
   console.log("HOME");
    rect(0,0,1280,720);
    
@@ -386,7 +394,7 @@ spelStatus = UITLEG;
 }
 
 if(spelStatus === UITLEG) {
-  // teken UITLEGPLUS scherm
+  // teken UITLEG scherm
   console.log ("UITLEG");
   rect (0,0,1280,720);
 
@@ -420,6 +428,7 @@ if(spelStatus === GEWONNEN) {
   textSize(69);
   text('GG YOU DID IT' ,400,200);
   textSize (40);
+  textFont (FONT4);
   image(img2,10,10,50,50);
   text(punten ,55 ,52);
   net = nu
